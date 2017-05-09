@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
+using TaskList.WebApi;
 
-[assembly: OwinStartup(typeof(TaskList.WebApi.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace TaskList.WebApi
 {

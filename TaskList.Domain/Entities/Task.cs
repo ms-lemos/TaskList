@@ -17,8 +17,5 @@ namespace TaskList.Domain.Entities
         public DateTime? DtEdicao { get; private set; }
         public DateTime? DtExclusao { get; set; }
         public DateTime? DtConclusao { get; set; }
-
-        private bool _concluida;
-        private bool _excluida;
     }
 }

@@ -1,4 +1,5 @@
 using System.Data.Entity.Migrations;
+using TaskList.Domain.Entities;
 using TaskList.Infra.Data.Context;
 
 namespace TaskList.Infra.Data.Migrations
@@ -24,6 +25,15 @@ namespace TaskList.Infra.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Tasks.AddOrUpdate(t =>
+            t.Titulo,
+            new Task {Titulo = "Aquele projeto"},
+            new Task {Titulo = "Projeto maneiro"},
+            new Task {Titulo = "O joão roubou pão"},
+            new Task {Titulo = "Olá Supero."},
+            new Task {Titulo = "Outro projeto"}
+            );
         }
     }
 }
