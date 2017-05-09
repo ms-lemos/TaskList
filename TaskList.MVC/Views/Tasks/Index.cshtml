@@ -1,0 +1,99 @@
+﻿@model IEnumerable<TaskList.MVC.ViewModels.TaskViewModel>
+
+@{
+    ViewBag.Title = "Página Inicial";
+}
+
+<h2>Página Inicial</h2>
+<hr />
+
+<p>
+    <button type="button" class="btn btn-sm btn-info" onclick="location.href = '@Url.Action("Create", "Tasks")'">
+        <i class="glyphicon glyphicon-plus"></i>
+        Adicionar task
+    </button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Concluida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtCriacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtEdicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtConclusao)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Concluida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtCriacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtEdicao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtConclusao)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-info" onclick="location.href = '@Url.Action("Edit", "Tasks", new {id = item.TaskId})'">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        Editar
+                    </button>
+                    <button type="button" class="btn btn-xs btn-info" onclick="location.href = '@Url.Action("Details", "Tasks", new {id = item.TaskId})'">
+                        <i class="glyphicon glyphicon-book"></i>
+                        Detalhes
+                    </button>
+                    <button type="button" class="btn btn-xs btn-info" onclick="location.href = '@Url.Action("Delete", "Tasks", new {id = item.TaskId})'">
+                        <i class="glyphicon glyphicon-minus"></i>
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script language="javascript" type="text/javascript">
+        var Tabela;
+
+        $(document)
+            .ready(function () {
+                Tabela = $('.table')
+                    .DataTable({
+                        "language": {
+                            "url": '//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json'
+                        },
+                        "lengthChange": false,
+                        "searching": true,
+                        "info": false,
+                        "paging": false,
+                        "aoColumnDefs": [{
+                            "bSortable": false,
+                            "aTargets": [5]
+                        }]
+                    });
+            });
+
+    </script>
+}

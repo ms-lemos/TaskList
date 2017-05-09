@@ -1,0 +1,84 @@
+﻿@model TaskList.MVC.ViewModels.TaskViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+    
+        var disabled = "";
+        if (Model.Excluida)
+        {
+            disabled = "disabled";
+        }
+}
+
+<h2>Detalhes Task</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Concluida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concluida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DtCriacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DtCriacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DtEdicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DtEdicao)
+        </dd>
+
+        @if (Model.Excluida)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.DtExclusao)
+            </dt>
+
+
+            <dd>
+                @Html.DisplayFor(model => model.DtExclusao)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.DtConclusao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DtConclusao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div>
+        <input type="button" value="Voltar" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Tasks")'" />
+        <input type="button" value="Editar" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", "Tasks", new { id = Model.TaskId })'" @disabled/>
+    </div>
+</p>
